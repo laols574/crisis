@@ -10,7 +10,7 @@ nltk.grammar._STANDARD_NONTERM_RE = re.compile('( [\w/][\w$/^<>-]* ) \s*', re.VE
 from nltk.parse.generate import generate
 from nltk import CFG
 
-f = open("grammar_rules.txt", "r")
+f = open("grammar/grammar_rules.txt", "r")
 
 dg = f.read()
 

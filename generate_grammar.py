@@ -12,7 +12,7 @@ import re
 
 pos_desired = ['CC', 'CD', 'DT','FW', 'IN','JJ','JJR','JJS','LS','MD','NN','NNP','NNPS','NNS','PDT','POS','PRP','VBZ','VBP','VBN','VBG','UH','VB','VBD','SYM','RP','RBS','RBR','RB', 'PRP$', 'N']
 
-f = open("ny_training_text.txt", "r")
+f = open("training_text/lib_training_text.txt", "r")
 sentList = f.readlines()
 wordsList = []
 for sent in sentList:

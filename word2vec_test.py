@@ -17,7 +17,7 @@ def main():
     #  Reads ‘ny_training_text.txt’ file
 
     file_name = input("con or lib")
-    sample = open(file_name + "_training_text.txt", "r")
+    sample = open("training_text/" + file_name + "_training_text.txt", "r")
     s = sample.read()
 
     # Replaces escape character with space
@@ -88,7 +88,7 @@ def remove_stopwords(text, num):
     #remove custom stop words
     text_list = text.split()
 
-    stop = open("stopwords" + num + "k.txt")
+    stop = open("stop_words/stopwords" + num + "k.txt")
     stop = stop.readlines()
     my_stop_words = STOPWORDS.union(set(stop))
 

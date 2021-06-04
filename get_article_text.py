@@ -2,7 +2,7 @@ from newsplease import NewsPlease
 from newspaper.article import ArticleException
 
 #ny_articles = NewsPlease.from_file("nytimes_urls.txt")
-urls = open("con_urls.txt")
+urls = open("urls/con_urls.txt")
 urls = urls.readlines()
 e_articles = []
 for url in urls:
@@ -14,7 +14,7 @@ for url in urls:
 #e_articles = NewsPlease.from_file("epoch_urls.txt")
 
 #ny_file = open("ny_training_text.txt", "w")
-e_file = open("con_training_text.txt", "w")
+e_file = open("training_text/con_training_text.txt", "w")
 
 #ny_articles = [ny_articles[k] for k in ny_articles.keys()]
 #e_articles = [e_articles[k] for k in e_articles.keys()]
