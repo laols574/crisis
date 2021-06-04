@@ -1,5 +1,8 @@
-# Python program to generate word vectors using Word2Vec
-
+'''
+Author: Lauren Olson
+Description:
+Python program to generate word vectors using Word2Vec
+'''
 # importing all necessary modules
 from nltk.tokenize import sent_tokenize, word_tokenize
 import nltk
@@ -13,6 +16,16 @@ import gensim
 from gensim.models import Word2Vec
 from gensim.parsing.preprocessing import STOPWORDS
 
+from nltk.parse.generate import generate
+from nltk import CFG
+
+NOUNS = ["NN", "NNS", "NNPS", "NNP"]
+VERBS = ["VB","VBD","VBG","VBN","VBP","VBZ"]
+GRAMMAR = CFG.fromstring("""
+    S -> NP VB
+    NP -> DET N 
+    VP -> V""")
+
 def main():
     #  Reads ‘ny_training_text.txt’ file
 
@@ -21,39 +34,44 @@ def main():
     s = sample.read()
 
     # Replaces escape character with space
-    f = s.replace("\n", " ")
+    corpus = s.replace("\n", " ")
 
+    #remove stopwords
     sw = input("none, 1, 10, 100")
-    f = remove_stopwords(f, sw)
+    corpus = remove_stopwords(corpus, sw)
 
-    data = []
+    #tokenize data
+    data = tokenize(corpus)
 
-    # iterate through each sentence in the file
-    for i in sent_tokenize(f):
-        temp = []
-
-        # tokenize the sentence into words
-        for j in word_tokenize(i):
-            temp.append(j.lower())
-
-        data.append(temp)
-
+    #ask whether the user wants a skip gram model
     skip_gram = int(input("skip_gram? 1 or 0"))
-    # Create CBOW model
+
+
     model1 = gensim.models.Word2Vec(data, min_count = 1,
                                   vector_size = 100, window = 5, sg=skip_gram)
 
 
-    # Print results
-    sims = set()
-
-    num = 20
-    nouns = ["NN", "NNS", "NNPS", "NNP"]
-    verbs = ["VB","VBD","VBG","VBN","VBP","VBZ"]
-    sentence = ["good"]
+    #ask for word and print results
     test_word = input("word?")
     print(model1.wv.most_similar(test_word, topn=10))
-'''
+
+
+
+
+"""
+generate_sequence
+
+This function takes a word as input and "builds a sentence"
+by finding the most likely word given a list of words
+
+input: the word used to start the sequence
+ num = the number of words you want to generate
+output: printed sentence
+"""
+def generate_sequence(word, num):
+    sims = set()
+    sentence = [word]
+
     while(len(sims) < num):
         sim_pairs = model1.wv.most_similar(positive=sentence, topn=100)
 
@@ -63,15 +81,53 @@ def main():
             word = sim_pairs[i][0]
             i += 1
 
-        print(word)
-        #pos_tags = nltk.pos_tag(words)
+        print(word, end=" ")
 
-        #words = [pos_tag[0] for pos_tag in pos_tags if pos_tag[1] in nouns]
         sentence.append(word)
         sims.add(word)
 
-    print(sims)
-'''
+    print()
+
+"""
+generate_nouns
+generate nouns most similar to an input word
+input: word, num = the number of words you want to generate
+output: the printed nouns and their similarity scores
+"""
+def generate_nouns(word, num):
+    sims = set()
+
+    while(len(sims) < num):
+        sim_pairs = model1.wv.most_similar(positive=word, topn=20)
+        words = [pair[0] for pair in sim_pairs]
+
+        pos_tags = nltk.pos_tag(words)
+
+        words = [pos_tag[0] for pos_tag in pos_tags if pos_tag[1] in NOUNS]
+
+        for word in words:
+            sims.add(word)
+
+"""
+generate_verbs
+generate verbs most similar to an input word
+input: word, num = the number of words you want to generate
+output: the printed nouns and their similarity scores
+"""
+def generate_verbs(word, num):
+    sims = set()
+
+    while(len(sims) < num):
+        sim_pairs = model1.wv.most_similar(positive=word, topn=20)
+        words = [pair[0] for pair in sim_pairs]
+
+        pos_tags = nltk.pos_tag(words)
+
+        words = [pos_tag[0] for pos_tag in pos_tags if pos_tag[1] in VERBS]
+
+        for word in words:
+            sims.add(word)
+
 
 """
 function: remove stopwords
@@ -102,3 +158,19 @@ def remove_stopwords(text, num):
 
 if __name__ == "__main__":
     main()
+
+
+def tokenize(corpus):
+    data = []
+
+    # iterate through each sentence in the file
+    for i in sent_tokenize(corpus):
+        temp = []
+
+        # tokenize the sentence into words
+        for j in word_tokenize(i):
+            temp.append(j.lower())
+
+        data.append(temp)
+
+    return data
