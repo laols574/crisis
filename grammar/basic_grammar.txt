@@ -1,0 +1,24 @@
+S   ->   NP VP
+
+PP   ->   P NP | IN NP | ADVP IN NP
+ADVP   ->   RB
+
+NP   ->   PRP | NNP | DT NN | NN | QP NNS | QP | CD NN | NP PP | NNP NNPS | NP SBAR | PRP$ JJ NN CC JJ NN NNS
+
+VP   ->   VB | VB NP | VB NP PP | VB PP | V VP | V PP | VBD NP PP | VBZ NP
+
+SBAR   ->   WHADVP S
+WHADVP   ->   WRB
+
+NP   ->   DT N | DT JJ CD AP NN | DT CD JJ AP NN
+
+AP   ->   RB JJ | RBR JJR | RBS JJS
+
+QP   ->   RB CD
+
+EX   ->   'there'
+TO   ->   'to'
+WDT   ->   'that' |  'what' |  'whatever' | 'which' | 'whichever'
+WP   ->   'that' |  'what' | 'whatever' | 'whatsoever' | 'which' | 'who' | 'whom' | 'whosoever'
+WP$   ->   'whose'
+WRB   ->   'how' | 'however' | 'whence' | 'whenever' | 'where' | 'whereby' | 'whereever' | 'wherein' | 'whereof' | 'why'

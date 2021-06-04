@@ -16,5 +16,6 @@ dg = f.read()
 
 grammar = CFG.fromstring(dg)
 
+
 for sentence in generate(grammar, n=10):
     print(' '.join(sentence))
