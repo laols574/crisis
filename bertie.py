@@ -27,7 +27,7 @@ def test_main():
 
     df = pd.read_csv("train.csv", header=None)
 
-    #df = pd.read_csv('https://github.com/clairett/pytorch-sentiment-classification/raw/master/data/SST2/train.tsv', delimiter='\t', header=None)
+    df = pd.read_csv('https://github.com/clairett/pytorch-sentiment-classification/raw/master/data/SST2/train.tsv', delimiter='\t', header=None)
 
     df = df.sample(frac=1).reset_index(drop=True)
 
