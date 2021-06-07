@@ -18,6 +18,9 @@ import transformers as ppb
 import warnings
 warnings.filterwarnings('ignore')
 
+import pytest
+
+
 def main():
 
     df = pd.read_csv("train.csv", header=None)
@@ -72,8 +75,11 @@ def main():
     lr_clf = LogisticRegression()
     lr_clf.fit(train_features, train_labels)
 
+    assert lr_clf.score(test_features, test_labels) > .9
+
     #SCORE THE CLASSIFIER
     print(lr_clf.score(test_features, test_labels))
+
 
 if __name__ == "__main__":
     main()
