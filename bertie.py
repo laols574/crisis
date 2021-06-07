@@ -21,7 +21,7 @@ warnings.filterwarnings('ignore')
 import pytest
 
 
-def main():
+def test_main():
 
     df = pd.read_csv("train.csv", header=None)
 
@@ -81,6 +81,7 @@ def main():
     #SCORE THE CLASSIFIER
     print(lr_clf.score(test_features, test_labels))
 
-
+'''
 if __name__ == "__main__":
     main()
+'''

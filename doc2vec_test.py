@@ -1,3 +1,4 @@
+'''
 import smart_open
 import gensim
 
@@ -16,3 +17,4 @@ test_corpus = list(read_corpus("training_text/lib_testing_text.txt", tokens_only
 
 print(train_corpus[0:2])
 print(test_corpus[0:2])
+'''
