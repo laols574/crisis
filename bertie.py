@@ -3,6 +3,7 @@ Author: Lauren Olson
 
 Description: This file will contain the implementation
 allowing for prediction of sentences by using BERT
+see if get same error
 """
 
 #needed packages
