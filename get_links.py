@@ -25,6 +25,8 @@ for url in urls:
 			link = o.get('href')
 			
 			if(link != None and link[0] != "#"):
+				if(link[0] == "/"):
+					link = "https://breitbart.com" + link
 				f.write(link + "\n")
 				tally += 1
 
