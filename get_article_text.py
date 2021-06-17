@@ -37,13 +37,13 @@ def test_collect():
             continue
         e_str += article.maintext
         e_file.write(article.maintext)
-	if(count == 1000):
-		print(1000)
-	if(count == 5000):
-		print(5000)
-	if(count == 10000):
-		print(10000)
-        count += 1
+    	if(count == 1000):
+    		print(1000)
+    	if(count == 5000):
+    		print(5000)
+    	if(count == 10000):
+    		print(10000)
+            count += 1
 
     #print(len(ny_str.split()))
     #print(len(e_str.split()))
