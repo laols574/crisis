@@ -4,7 +4,7 @@ import pytest
 
 #ny_articles = NewsPlease.from_file("nytimes_urls.txt")
 def test_collect():
-    urls = open("breitbart_links.txt")
+    urls = open("breitbart_links_u.txt")
     urls = urls.readlines()
     e_articles = []
     for url in urls:
