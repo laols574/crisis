@@ -4,4 +4,4 @@ dist: xenial
 python:
   - 3.7
 script:
-  - pytest bertie.py
+  - pytest get_article_text.py
