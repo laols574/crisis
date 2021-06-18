@@ -27,23 +27,23 @@ def test_collect():
     count = 0
     '''
     for article in ny_articles:
-        if(article.maintext == None):
-            continue
-        ny_str += article.maintext
-        ny_file.write(article.maintext)
+    if(article.maintext == None):
+    continue
+    ny_str += article.maintext
+    ny_file.write(article.maintext)
     '''
     for article in e_articles:
         if(article.maintext == None):
             continue
         e_str += article.maintext
         e_file.write(article.maintext)
-    	if(count == 1000):
-    		print(1000)
-    	if(count == 5000):
-    		print(5000)
-    	if(count == 10000):
-    		print(10000)
-            count += 1
+        if(count == 1000):
+            print(1000)
+        if(count == 5000):
+            print(5000)
+        if(count == 10000):
+            print(10000)
+        count += 1
 
     #print(len(ny_str.split()))
     #print(len(e_str.split()))
