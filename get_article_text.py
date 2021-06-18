@@ -37,6 +37,8 @@ def test_collect():
             continue
         e_str += article.maintext
         e_file.write(article.maintext)
+        if(count == 100):
+            print(100)
         if(count == 1000):
             print(1000)
         if(count == 5000):
