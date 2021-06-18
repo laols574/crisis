@@ -1,4 +1,4 @@
-install: travis_wait 60 mvn install
+install: travis_wait 20 mvn install
 language: python
 sudo: required
 dist: xenial
